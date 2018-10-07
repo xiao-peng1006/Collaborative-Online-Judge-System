@@ -29,4 +29,10 @@ export const PROBLEMS: Problem[] = [
  "name":"Sliding Window Maximum",
  "desc":"Given an array of n integer with duplicate number, and a moving window(size k), move the window at each iteration from the start of the array, find the maximum number inside the window at each moving.",
  "difficulty":"super"
+},
+{
+  "id":6,
+  "name":"Reverse Integer",
+  "desc":"Given a 32-bit signed integer, reverse digits of an integer.",
+  "difficulty":"easy"
 }];
