@@ -4,9 +4,10 @@ const app = express();
 
 // Connect to mongodb
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://xiaopeng:mfp2m6ea@ds125293.mlab.com:25293/problems');
+mongoose.connect('mongodb://user01:user01@ds125293.mlab.com:25293/problems', {useNewUrlParser: true});
 
 const restRouter = require('./routes/rest');
+const indexRouter = require('./routes/index');
 
 // app.get('/', (req, res) => {
 //   res.send('Hello world from express!');
