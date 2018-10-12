@@ -1,6 +1,11 @@
 const express = require('express');
 const path = require('path');
 
+var http = require('http');
+var socketIO = require('socket.io');
+var io = socketIO();
+var editorSocketService = require('./services/editorSocketService')(io);
+
 const app = express();
 
 // Connect to mongodb
@@ -17,6 +22,17 @@ const indexRouter = require('./routes/index');
 app.use('/api/v1', restRouter);
 app.use(express.static(path.join(__dirname, '../public')));
 
-app.listen(3000, () => {
+// app.listen(3000, () => {
+//   console.log('App is listening to port 3000!');
+// });
+
+const server = http.createServer(app);
+io.attach(server);
+server.listen(3000);
+server.on('listening', () => {
   console.log('App is listening to port 3000!');
-});
+})
+
+app.use((req, res) => {
+  res.sendFile('index.html', { root: path.join(__dirname, '../public')});
+})
