@@ -16,7 +16,7 @@ export class EditorComponent implements OnInit {
   public languages: string[] = ['Java', "Python"];
   language: string = 'Java';
 
-  defaultCotent = {
+  defaultContent = {
     'Java': `public class Example {
         public static void main(String[] args) {
             // Type your Java code here
@@ -56,6 +56,7 @@ export class EditorComponent implements OnInit {
     this.editor.on('change', (e) => {
       console.log('editor changes:' + JSON.stringify(e));
 
+      // Check if the change is inititated from the current browser session
       if (this.editor.lastAppliedChange != e) {
         this.collaboration.change(JSON.stringify(e));
       }
@@ -64,7 +65,7 @@ export class EditorComponent implements OnInit {
 
   resetEditor(): void {
     this.editor.getSession().setMode("ace/mode/" + this.language.toLowerCase());
-    this.editor.setValue(this.defaultCotent[this.language]);
+    this.editor.setValue(this.defaultContent[this.language]);
   }
 
   setLanguage(language: string): void {

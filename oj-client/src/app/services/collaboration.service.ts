@@ -12,8 +12,10 @@ export class CollaborationService {
   constructor() { }
 
   init(editor: any, sessionId: string): void {
+    // Establish socket connection
     this.collaborationSocket = io(window.location.origin, { query: 'sessionId=' + sessionId });
 
+    // Apply to local browser session when receive change from server
     this.collaborationSocket.on('change', (delta: string) => {
       console.log('collaboration: editor changes ' + delta);
       delta = JSON.parse(delta);
@@ -22,6 +24,7 @@ export class CollaborationService {
     });
   }
 
+  // Send to server and forward to other participants
   change(delta: string): void {
     this.collaborationSocket.emit('change', delta);
   }

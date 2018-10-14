@@ -5,9 +5,12 @@ module.exports = function(io) {
   // Map from socketId to sessionId
   var socketIdToSessionId = {};
 
+  // Waiting for connection from client
   io.on('connection', (socket) => {
+    // Get session id which is the problem id
     let sessionId = socket.handshake.query['sessionId'];
 
+    // Get current working problem with given a socket id
     socketIdToSessionId[socket.id] = sessionId;
 
     // Add current socket id to collaboration session participants
@@ -17,12 +20,15 @@ module.exports = function(io) {
       };
     }
 
+    // Get all participants with given problem id
     collaborations[sessionId]['participants'].push(socket.id);
 
     // socket event listeners
     socket.on('change', delta => {
       console.log('change ' + socketIdToSessionId[socket.id] + ': ' + delta);
       let sessionId = socketIdToSessionId[socket.id];
+
+      // Forward to all participants, except the originating one
       if (sessionId in collaborations) {
         let participants = collaborations[sessionId]['participants'];
         for (let i = 0; i < participants.length; i++) {
