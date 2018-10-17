@@ -40,5 +40,18 @@ module.exports = function(io) {
         console.log('warning: could not find socket id in collaborations');
       }
     })
+
+    let participants = collaborations[sessionId]['participants'];
+    for (let i = 0; i < participants.length; i++) {
+      io.to(participants[i]).emit('connectedUser', participants);
+    }
+
+    socket.on('disconnect', (socket) => {
+      let i = participants.indexOf(socket)
+      participants.splice(i, 1);
+      for (let j = 0; j < participants.length; j++) {
+        io.to(participants[j]).emit('disconnectedUser', participants);
+      }
+    })
   })
 }

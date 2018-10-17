@@ -22,6 +22,14 @@ export class CollaborationService {
       editor.lastAppliedChange = delta;
       editor.getSession().getDocument().applyDeltas([delta]);
     });
+
+    this.collaborationSocket.on('connectedUser', (users: string) => {
+      console.log('Sockets open: ' + users);
+    })
+
+    this.collaborationSocket.on('disconnectedUser', (users: string) => {
+      console.log('Sockets open: ' + users);
+    })
   }
 
   // Send to server and forward to other participants
