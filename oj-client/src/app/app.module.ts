@@ -11,6 +11,7 @@ import { routing } from './app.routes';
 import { NewProblemComponent } from './components/new-problem/new-problem.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { EditorComponent } from './components/editor/editor.component';
+import { EditProblemComponent } from './components/edit-problem/edit-problem.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { EditorComponent } from './components/editor/editor.component';
     ProblemDetailComponent,
     NewProblemComponent,
     NavbarComponent,
-    EditorComponent
+    EditorComponent,
+    EditProblemComponent
   ],
   imports: [
     BrowserModule,

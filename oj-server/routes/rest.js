@@ -28,4 +28,15 @@ router.post('/problems', jsonParser, (req, res) => {
     });
 });
 
+// Edit a existing problem
+router.put('/problems/:id', jsonParser, (req, res) => {
+    const id = req.params.id;
+    problemService.editProblem(req.params.id, req.body)
+      .then(problem => {
+        res.json(problem)
+      }, error => {
+        res.status(400).send(error);
+      })
+});
+
 module.exports = router;

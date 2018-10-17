@@ -97,8 +97,22 @@ const addProblem = function(newProblem) {
   });
 };
 
+const editProblem = function(id, updatedProblem) {
+  updatedProblem.id = id;
+  return new Promise((resolve, reject) => {
+    problemModel.findOneAndUpdate({id: updatedProblem.id}, updatedProblem, (err, data) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(data);
+      }
+    })
+  })
+}
+
 module.exports = {
   getProblems,
   getProblem,
-  addProblem
+  addProblem,
+  editProblem
 }
