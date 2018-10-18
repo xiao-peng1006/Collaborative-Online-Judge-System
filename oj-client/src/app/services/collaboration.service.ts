@@ -28,4 +28,9 @@ export class CollaborationService {
   change(delta: string): void {
     this.collaborationSocket.emit('change', delta);
   }
+
+  // Restore buffer from redis cache
+  restoreBuffer(): void {
+    this.collaborationSocket.emit("restoreBuffer");
+  }
 }
