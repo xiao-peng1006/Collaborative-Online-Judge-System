@@ -27,6 +27,11 @@ module.exports = function(io) {
 
     if (sessionId in collaborations) {
       collaborations[sessionId]['participants'].push(socket.id);
+
+      let participants = collaborations[sessionId]['participants'];
+      for (i = 0; i < participants.length; i++) {
+        io.to(participants[i]).emit('userChange', participants);
+      }
     } else {
       redisClient.get(sessionPath + sessionId, (data) => {
         if (data) {
@@ -45,6 +50,11 @@ module.exports = function(io) {
 
         // Get all participants with given problem id
         collaborations[sessionId]['participants'].push(socket.id);
+
+        let participants = collaborations[sessionId]['participants'];
+        for (i = 0; i < participants.length; i++) {
+          io.to(participants[i]).emit('userChange', participants);
+        }
 
         // Get all participants of current session
         console.log(collaborations[sessionId]['participants']);
@@ -117,6 +127,11 @@ module.exports = function(io) {
             delete collaborations[sessionId];
           }
         }
+
+        for (i = 0; i < participants.length; i++) {
+          io.to(participants[i]).emit('userChange', participants);
+        }
+
       }
 
       if (!foundAndRemoved) {
