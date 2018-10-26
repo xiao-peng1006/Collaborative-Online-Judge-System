@@ -15,7 +15,7 @@ export class EditorComponent implements OnInit {
 
   editor: any;
   sessionId: string;
-  public languages: string[] = ['Java', "Python"];
+  public languages: string[] = ['Java', "Python", "C++"];
   language: string = 'Java';
   output: string = '';
   users: string = '';
@@ -30,6 +30,11 @@ export class EditorComponent implements OnInit {
     'Python': `class Solution:
       def example():
         # Type your Python code here
+    `,
+    'C++': `int main()
+    {
+      return 0;
+    }
     `
   };
 

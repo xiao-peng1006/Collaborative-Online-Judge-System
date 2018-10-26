@@ -52,6 +52,10 @@ curl -fsSL https://get.docker.com/ | sh
 sudo usermod -aG docker $(whoami)
 sudo systemctl enable docker
 ```
+using following command to build docker image using Dockerfile
+```
+sudo docker build . -t your_name/cs503
+```
 
 Nginx (For ubuntu 16.04)
 ```
