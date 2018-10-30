@@ -1,18 +1,14 @@
 # Collaborate Online Judging System
 
-One Paragraph of project description goes here
+Online coding tool implements collaborative working, temporary cache storage and online judging system. Uers are able to work with each other together in real time without refreshing the page. The submitted code will be executed through online judging system and return the results back to user. Current working code will be saved to cache storage temporarily if all users exit the session. 
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Follow the stpes in Installing section to setup the environment for development. Some builds is required for the application to function correctly. More information in Build section.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
-```
-Give the example
-```
+This project is worked on ubuntu version 18.04...
 
 ### Installing
 
@@ -52,10 +48,6 @@ curl -fsSL https://get.docker.com/ | sh
 sudo usermod -aG docker $(whoami)
 sudo systemctl enable docker
 ```
-using following command to build docker image using Dockerfile
-```
-sudo docker build . -t your_name/cs503
-```
 
 Nginx (For ubuntu 16.04)
 ```
@@ -88,7 +80,7 @@ End with an example of getting some data out of the system or using it for a lit
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
+Currently working on it...
 
 ### Break down into end to end tests
 
@@ -108,31 +100,25 @@ Give an example
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+Docker build required for any changes for executor in Dockfile, use command
+```
+sudo docker build . -t your_name/project_name
+```
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [AngularJS](https://angularjs.org/) - The web framework used
+* [Docker](https://www.docker.com/) - Backend executor
+* [Redis](https://redis.io/) - Used to provide cache storage for user code
+* [Nginx](https://www.nginx.com/) - Perform load balancing
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+...
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+We use [Git](https://git-scm.com/) for versioning. 
 
 ## Acknowledgments
 
