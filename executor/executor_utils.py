@@ -24,7 +24,7 @@ SOURCE_FILE_NAMES = {
 BINARY_NAMES = {
     "java": "Example",
     "python": "example.py",
-    "c++": "a.out"
+    "c++": "./a.out"
 }
 
 BUILD_COMMANDS = {
