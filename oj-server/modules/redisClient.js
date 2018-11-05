@@ -1,5 +1,16 @@
-var redis = require('redis');
-var client = redis.createClient();
+var redis = require('redis').createClient();
+
+if (process.env.REDISTOGO_URL) {
+    // TODO: redistogo connection
+} else {
+    var redis = require("redis").createClient();
+}
+
+// inside if statement
+var rtg   = require("url").parse(process.env.REDISTOGO_URL);
+var redis = require("redis").createClient(rtg.port, rtg.hostname);
+
+redis.auth(rtg.auth.split(":")[1]);
 
 function set(key, value, callback) {
   client.set(key, value, (err, res) => {

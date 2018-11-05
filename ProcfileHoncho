@@ -1,1 +1,1 @@
-node: cd oj-server && npm install && node server.js
+node: npm install && node server.js

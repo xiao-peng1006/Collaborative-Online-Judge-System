@@ -29,10 +29,12 @@ app.use(express.static(path.join(__dirname, '../public')));
 //   console.log('App is listening to port 3000!');
 // });
 
+var port = process.env.PORT || 3000;
+
 // start socket connection, based on the http server
 const server = http.createServer(app);
 io.attach(server);
-server.listen(3000);
+server.listen(port);
 server.on('listening', () => {
   console.log('App is listening to port 3000!');
 })
