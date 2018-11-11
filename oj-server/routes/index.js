@@ -3,7 +3,7 @@ const router = express.Router();
 const path = require('path');
 
 router.get('/', (req, res) => {
-  res.sendFile('index.html', { root: path.join(__dirname, '../public')})
+  res.sendFile('public/index.html', {root: path.dirname(__dirname)}); // Avoid going above the root in Heroku
 });
 
 module.exports = router;
