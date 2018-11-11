@@ -1,16 +1,20 @@
-var redis = require('redis').createClient();
+// var redis = require('redis').createClient();
+//
+// if (process.env.REDISTOGO_URL) {
+//     // TODO: redistogo connection
+// } else {
+//     var redis = require("redis").createClient();
+// }
+//
+// // inside if statement
+// var rtg   = require("url").parse(process.env.REDISCLOUD_URL);
+// var redis = require("redis").createClient(rtg.port, rtg.hostname, {no_ready_check: true});
+//
+// redis.auth(rtg.auth.split(":")[1]);
 
-if (process.env.REDISTOGO_URL) {
-    // TODO: redistogo connection
-} else {
-    var redis = require("redis").createClient();
-}
 
-// inside if statement
-var rtg   = require("url").parse(process.env.REDISCLOUD_URL);
-var redis = require("redis").createClient(rtg.port, rtg.hostname, {no_ready_check: true});
-
-redis.auth(rtg.auth.split(":")[1]);
+var redis = require('redis');
+var client = redis.createClient(process.env.REDISCLOUD_URL, {no_ready_check: true});
 
 function set(key, value, callback) {
   client.set(key, value, (err, res) => {
