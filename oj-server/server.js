@@ -23,7 +23,7 @@ const indexRouter = require('./routes/index');
 // });
 
 app.use('/api/v1', restRouter);
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static(path.join(__dirname, '/public')));
 
 // app.listen(3000, () => {
 //   console.log('App is listening to port 3000!');
